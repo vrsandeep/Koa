@@ -18,25 +18,25 @@ describe Koa do
       "value" => String, # | Int32 | Int64 | Float32,
     }
     Koa.schema "subscription", {
-      "id"           => String,
-      "name"         => String,
-      "created_at"   => Int64,
-      "filters"      => ["filter"],
+      "id"         => String,
+      "name"       => String,
+      "created_at" => Int64,
+      "filters"    => ["filter"],
     }
 
     Koa.describe "Creates a new subscription"
     Koa.tags ["admin", "downloader", "subscription"]
     Koa.body schema: {
-      "name"     => String,
-      "filters"  => ["filter"],
+      "name"    => String,
+      "filters" => ["filter"],
     }
     Koa.response 200, schema: "result"
     post "/api/admin/plugin/subscriptions" do |env|
-        response = {
-            "success" => true,
-        }
-        env.response.content_type = "application/json"
-        (env.response.print response).to_json
+      response = {
+        "success" => true,
+      }
+      env.response.content_type = "application/json"
+      (env.response.print response).to_json
     end
 
     doc = Koa.generate
