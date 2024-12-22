@@ -1,3 +1,4 @@
+require "kemal"
 require "open_api"
 require "./koa/*"
 
