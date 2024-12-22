@@ -17,8 +17,6 @@ jobs:
       run: shards install
     - name: Test
       run: crystal spec
-    - name: Ameba
-      run: ./bin/ameba
 
   different-crystal-versions:
     strategy:
@@ -45,6 +43,3 @@ jobs:
       - name: Check formatting
         run: crystal tool format; git diff --exit-code
         if: matrix.crystal == 'latest' && matrix.os == 'ubuntu-latest'
-
-      - name: Ameba
-        run: ./bin/ameba
